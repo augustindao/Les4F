@@ -8,7 +8,7 @@
 rm(list=ls())
 
 # Create dataframe
-raw_data <- read.csv("/Users/augustin/Documents/Programming/Les4F/Data/Ligue1-data.csv", header = TRUE, sep = ";")
+raw_data <- read.csv("~/Data/Ligue1-data.csv", header = TRUE, sep = ";")
 data <- raw_data[1:20,c("ID","Team.Name","Standings.2015.16","Points.2015.16","Standings.2016.17","Points.2016.17","M1","M2","M3","M4","M5","M6","M7","M8","M9","M10")]
 
 ## 1. Define variables
@@ -38,7 +38,7 @@ data$Form[1:20] <- (diff_coeff*data$Points.2016.17 + data$Points.2016.17)
 ## 5. Assign point prediction
 data$PointsPredicted <- round(alpha_1*data$Qual.Score + alpha_2*data$Form, digits = 0)
 
-## 4. Plot league standing
+## 6. Plot league standing
 output_data <- data[ ,c("ID","Team.Name","Points.2015.16","Points.2016.17","Qual.Score","Form","PointsPredicted")]
 output_data <- output_data[order(output_data$PointsPredicted, decreasing = TRUE), ]
 output_data
