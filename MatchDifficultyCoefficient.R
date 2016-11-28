@@ -1,7 +1,7 @@
 #' Match Difficulty Coefficient function 
 #'
-#' This function assigns a score evaluating the current form 
-#' of all teams based on the first ten results of the current season.
+#' This function creates a coefficient that evaluates for each team the difficulty of the first ten games (and therefore the next 28).
+#' 
 #'   
 #' [INSERT MOTIVATION OF DIFFICULTY COEFF COMPUTATION]
 #'  
@@ -20,7 +20,7 @@ match_diff_coeff <- function(current_points, match_matrix){
   diff_futur <- c(rep(0, n))
   coeff_diff <- c(rep(0, n))
   
-  # Compute the maximum difficulty possible (team plays against all teams including self)
+  # Compute the total difficulty over the season (team plays against all teams except self)
   max_diff <- 187 - (20 - current_points)
   
   # Compute the difficulty of first ten match played
