@@ -13,15 +13,12 @@ data <- raw_data[1:20,c("ID","Team.Name","Standings.2015.16","Points.2015.16","S
 
 ## 1. Define variables
 n = 20
-alpha_1 <- 0.7
-alpha_2 <- 0.3
-coeff_diff <- c(rep(0,20))
+alpha_1 <- 0.5
+alpha_2 <- 0.5
+diff_coeff <- c(rep(0,20))
 
 Points_toul_16 <- data[4,4]
 Points_psg_16 <- data[3,4]
-
-# We use working dataframe
-output_data <- data[ ,c("ID","Team.Name","Points.2015.16","Points.2016.17")]
 
 ## 2. Assign a quality score to each team
 data$Qual.Score <- score_team_qual(data$Points.2015.16, Points_psg_16, Points_toul_16)
@@ -30,16 +27,16 @@ data$Qual.Score <- score_team_qual(data$Points.2015.16, Points_psg_16, Points_to
 
 # Convert data into correct format for function use (don't really know why but otherwise it didn't work)
 match_matrix <- as.matrix(data[1:20,7:16])
-current_points <- as.matrix(data[1:20,6])
+current_rank <- as.matrix(data$ID)
 
 # Compute difficulty coefficient
-diff_coeff <- match_diff_coeff(current_points, match_matrix)
+diff_coeff <- match_diff_coeff(current_rank, match_matrix)
 
 # 4. Assign Current form score
-data$Form[1:20] <- (coeff_diff*data$Points.2016.17 + data$Points.2016.17)
+data$Form[1:20] <- (diff_coeff*data$Points.2016.17 + data$Points.2016.17)
 
 ## 5. Assign point prediction
-data$PointsPredicted <- round(alpha_1*output_data$Qual.Score + alpha_2*output_data$Form, digits = 0)
+data$PointsPredicted <- round(alpha_1*data$Qual.Score + alpha_2*data$Form, digits = 0)
 
 ## 4. Plot league standing
 output_data <- data[ ,c("ID","Team.Name","Points.2015.16","Points.2016.17","Qual.Score","Form","PointsPredicted")]
