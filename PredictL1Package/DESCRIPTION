@@ -1,10 +1,10 @@
-Package: PredictL1Package
-Type: Package
-Title: What the package does (short line)
-Version: 1.0
-Date: 2016-11-28
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
-RoxygenNote: 5.0.1
+Package: ProjectPackage
+Title: Ligue 1 2017 - Final Ranking Predictions 
+Version: 0.0.0.9000
+Authors@R: person ("Augustin", "Dao", email = "augustin.dao@sciencespo.fr", role = c("programer"))("Edgard", "Dewitte", email = "edgard.dewitte@sciencespo.fr", role = c("project designer"]("Sydney", "Wong", email = "zydney.wong@sciencespo.fr", role = c("Data scientist", "cre"]("Victor", "Saint-Jean", email = "victor.saintjean@sciencespo.fr", role = c("Coffeemaker"))
+Description: This package tries to predict the final ranking of the French football championship 'Ligue 1' in 2017, based on each team 'form', i.e. results in the first ten games, and 'quality', i.e. results in the previous championship.
+Depends: R (>= 3.3.1)
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat

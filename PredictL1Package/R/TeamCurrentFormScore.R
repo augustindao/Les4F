@@ -3,10 +3,10 @@
 #' This function assigns a score evaluating the current form 
 #' of a team based on its first ten results of the current season
 #'   
-#' [INSERT MOTIVATION OF CURENT FORM FORMULA]
+#' 
 #'  
-#' Formula: 
-#' Team_i score = (1 - (Leader points - Team_i points) / leader points ) * last team points
+#'
+#' 
 #'
 #' @export
 #' @examples
